@@ -26,19 +26,19 @@ app.post("/roll-dice", (req, res) => {
 
   if (betOption === "7_up" && ((diceNumber1+diceNumber2) > 7)) {
     result = "WIN";
-    winnings = 2 * betAmount;
+    winnings = (2 * betAmount)-betAmount;
   } else if (betOption === "7" && ((diceNumber1+diceNumber2)  === 7)) {
     result = "WIN";
-    winnings = 5 * betAmount;
+    winnings = (5 * betAmount)-betAmount;
   } else if (betOption === "7_down" && ((diceNumber1+diceNumber2)  < 7)) {
     result = "WIN";
-    winnings = 2 * betAmount;
+    winnings =( 2 * betAmount)-betAmount;
   } else {
     result = "LOSE";
     winnings = -betAmount;
   }
 
-  const points = playerPoints + winnings - betAmount;
+  const points = playerPoints + winnings;
 
   // Save player's points to local storage
 //   localStorage.setItem("playerPoints", playerPoints);
